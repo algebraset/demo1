@@ -1,0 +1,80 @@
+#btnstyle1 .customcss::before{
+    content: '';
+    width:100%;
+    height: 100%;
+    background-color: white;
+    
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    transition: .5s all ease-in-out;
+}
+#btnstyle1 .customcss::after{
+    content: '';
+    width:100%;
+    height: 100%;
+    background-color: rgba(8, 75, 99,1);
+    
+    z-index: -1;
+   
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    transition: .5s all ease-in-out;
+}
+#btnstyle1 .customcss::after{
+    transition:transform .5s;
+    transform-origin:right;
+    transform: scaleX(0);
+
+   
+}
+#btnstyle1 :hover.customcss::after{
+    transition:transform .5s all ease-in-out;
+    transform-origin:left;
+    transform: scaleX(1);
+ 
+    
+}
+
+#btnstyle2 .customcss::before{
+    content: '';
+    width:100%;
+    height: 100%;
+    background-color: white;
+    
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    transition: .5s all ease-in-out;
+}
+#btnstyle2 .customcss::after{
+    content: '';
+    width:100%;
+    height: 100%;
+    background-color: rgb(2, 65, 61);
+    
+    z-index: -1;
+   
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    transition: .5s all ease-in-out;
+}
+#btnstyle2 .customcss::after{
+    transition:transform .5s;
+    transform-origin:top;
+    transform: scaleY(0);
+
+   
+}
+#btnstyle2 :hover.customcss::after{
+    transition:transform .5s all ease-in-out;
+    transform-origin:bottom;
+    transform: scaleY(1);
+ 
+    
+}
+
