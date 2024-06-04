@@ -1,10 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { Link ,useNavigate } from 'react-router-dom'
 import { app } from '../Firebaseconfig';
 import { getDatabase, ref, set } from "firebase/database";
+import { loginContext } from '../context/MainContext';
 
 
 export default function Addquiz() {
+  let nevigator=useNavigate()
+  let {user,setuser}=useContext(loginContext)
   const db = getDatabase(app);
   let addqueData=(event)=>{
     event.preventDefault() 
@@ -18,7 +21,12 @@ export default function Addquiz() {
   }
   set(ref(db, 'quiz/' + "quesID"+new Date().getTime()),  quesobj);
   event.target.reset()
+  
 }
+useEffect(()=>{
+  if(user==='')
+    nevigator('/view')
+},[user])
    return (
     <div>
       <section className='sticky top-0 z-10'>

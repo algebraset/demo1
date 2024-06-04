@@ -1,11 +1,16 @@
-import React, { useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState} from 'react'
+import { Link ,useNavigate} from 'react-router-dom'
 import { app } from '../Firebaseconfig';
 import { getDatabase, ref, onValue } from "firebase/database";
+import { loginContext } from '../context/MainContext';
 
 
 export default function () {
+  let {user,setuser}=useContext(loginContext)
   let [finalquestion,setfinalQueation]=useState([])
+  let [next,setnext]=useState(0)
+  let navigator=useNavigate()
+  console.log(next)
   const db = getDatabase(app);
   useEffect(()=>{
     const dbData= ref(db, 'quiz/');
@@ -22,6 +27,14 @@ export default function () {
        setfinalQueation(question)
     })
   },[])
+
+  useEffect(()=>{
+    if(user==='')
+        navigator('/register')
+
+  },[user])
+
+
   return (
     <div>
       <section className='sticky top-0 z-10'>
@@ -64,6 +77,10 @@ export default function () {
         
 
       </section>
+      <div className='flex items-center justify-evenly py-5'>
+         <button className='text-[20px] text-sky-600 px-8 py-1 border border-2 rounded-md border-sky-600 hover:bg-sky-600 hover:text-[white] font-bold ' onClick={()=>setnext(next-1)}>Prev</button>
+         <button className='text-[20px] text-green-600 px-8 py-1 border border-2 rounded-md border-green-600 hover:bg-green-600 hover:text-[white] font-bold ' onClick={()=>setnext(next+1)} >Next</button>
+      </div>
     </div>
   )
 }

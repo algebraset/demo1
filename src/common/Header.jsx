@@ -17,7 +17,9 @@ export default function Header() {
         <div className='flex items-center'>
           <ul className='flex items-center pr-7'>
             <Link to={'/view'}><li className='text-[white] font-semibold px-4 text-[18px] cursor-pointer'>View</li></Link>
-            <Link to={'/addquiz'}><li className='text-[white] font-semibold px-4 text-[18px] cursor-pointer'>Add Quiz</li></Link>
+           {
+            (user!=="") && <Link to={'/addquiz'}> <li className='text-[white] font-semibold px-4 text-[18px] cursor-pointer'>Add Quiz</li></Link>
+           }
             </ul>
            {
             user==="" 
